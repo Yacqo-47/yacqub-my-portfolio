@@ -1,0 +1,52 @@
+'use client'
+
+import Lottie from "lottie-react";
+import { useState, useEffect } from "react";
+
+export default function HeroSection() {
+  const [animationData, setAnimationData] = useState(null);
+
+  // Waxaan soo dhuuqi doonaa animation abstract ah oo Sky Blue ah oo online ah
+  useEffect(() => {
+    fetch("https://assets9.lottiefiles.com/packages/lf20_puciaact.json") // Abstract Liquid Animation
+      .then((res) => res.json())
+      .then((data) => setAnimationData(data));
+  }, []);
+
+  return (
+    <div className="relative min-h-screen bg-[#020617] overflow-hidden">
+      
+      {/* --- NAVBAR (Kani waa kii Consistency-ga ahaa) --- */}
+      <header className="fixed top-0 left-0 right-0 z-[10000] w-full bg-[#020617]/90 backdrop-blur-xl border-b border-white/[0.05]">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between p-5 lg:px-10">
+          <div className="text-2xl font-black text-sky-500 tracking-tighter uppercase">
+            YACQUB <span className="text-white">ALI</span>
+          </div>
+          {/* Menu-gaaga kale halkan ku dar... */}
+        </nav>
+      </header>
+
+      {/* --- LOTTIE ANIMATION (JSON ka socda Online) --- */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
+        {animationData && (
+          <Lottie 
+            animationData={animationData} 
+            loop={true} 
+            className="w-full max-w-[1000px] scale-150 md:scale-110" 
+          />
+        )}
+      </div>
+
+      {/* --- CONTENT (Wuxuu ka sarreeyaa Animation-ka) --- */}
+      <main className="relative z-10 pt-48 flex flex-col items-center text-center px-6">
+        <h1 className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-none">
+          DESIGN <br /> <span className="text-sky-500 italic">FUTURE.</span>
+        </h1>
+        <p className="mt-8 text-gray-400 text-lg max-w-xl leading-relaxed">
+          Senior Multimedia Designer focused on creating high-end digital experiences.
+        </p>
+      </main>
+
+    </div>
+  );
+}
