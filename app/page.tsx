@@ -79,7 +79,7 @@ const stats = [
 ];
 
 const clientLogos = [
-  { id: 1, img: "/logo.png", name: "Logo" },
+  { id: 1, img: "/Logo.png", name: "Logo" },
   { id: 2, img: "/Agab.png", name: "Agab" },
   { id: 3, img: "/had.png", name: "Had" },
   { id: 4, img: "/One Logo.png", name: "One" },
