@@ -132,7 +132,7 @@ const experiences = [
   { role: "Sales Marketing Specialist", company: "DEER GENERAL", duration: "2016 - 2022", description: "Gained over 6 years of deep experience in communication and consumer behavior, mastering market psychology and sales strategies.", skills: ["Market Research", "Consumer Behavior", "Sales"] }
 ];
 
-export default function HeroSection(): JSX.Element {
+export default function HeroSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
@@ -1097,64 +1097,71 @@ export default function HeroSection(): JSX.Element {
           <FaWhatsapp className="w-8 h-8 text-white relative z-10" />
         </a>
       </div>
+      
 <section className="py-24 bg-black relative overflow-hidden">
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-pink-500/5 blur-[120px] pointer-events-none" />
+      {/* Background Ambient Glow - Asalkii Casaanka ahaa */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-sky-500/5 bg-pink-500/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-[280px]">
           
-          {/* 1. Project Management (Small Card) */}
+          {/* 1. BRAND IDENTITY (Small Card) */}
           <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             whileHover={{ y: -5 }}
             className="md:col-span-4 bg-[#0c0c0e] border border-white/5 rounded-[2.5rem] p-8 relative overflow-hidden group"
           >
             <div className="relative z-10 h-full flex flex-col justify-end">
               <div className="mb-auto">
-                {/* Simulated UI: New Task Button */}
                 <div className="relative inline-block">
                   <div className="px-4 py-2 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full text-[10px] font-bold text-white flex items-center gap-2 shadow-[0_0_20px_rgba(236,72,153,0.4)]">
-                    <Plus size={12} /> New Task
+                    <Palette size={12} /> Brand Design
                   </div>
-                  {/* Cursors */}
                   <MousePointer2 className="absolute -bottom-4 -right-2 text-pink-500 fill-pink-500 rotate-[-15deg] group-hover:translate-x-2 transition-transform" size={20} />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Project Management</h3>
-              <p className="text-gray-500 text-xs leading-relaxed">
-                With Quixify, You Can Easily Organize Tasks, Assign Deadlines, And Track Progress In Real-Time.
+              <h3 className="text-xl font-bold text-white mb-2 italic">Visual Identity</h3>
+              <p className="text-gray-500 text-[10px] leading-relaxed uppercase font-medium">
+                Creating logos and brand systems that leave a lasting impression.
               </p>
             </div>
-            {/* Inner Glow */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/10 blur-3xl" />
           </motion.div>
 
-          {/* 2. Automation (Wide Card with Planet) */}
+          {/* 2. MOTION GRAPHICS (Wide Card) */}
           <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             whileHover={{ y: -5 }}
             className="md:col-span-8 bg-[#0c0c0e] border border-white/5 rounded-[2.5rem] p-10 relative overflow-hidden group"
           >
             <div className="relative z-10 h-full flex flex-col justify-center max-w-md">
-              <h3 className="text-3xl font-bold text-white mb-4">Automation</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Automate Repetitive Tasks And Streamline Your Workflows With Our Powerful Automation Features.
+              <h3 className="text-3xl font-bold text-white mb-4 italic uppercase">Motion & Animation</h3>
+              <p className="text-gray-400 text-sm leading-relaxed font-light tracking-wide">
+                From promo videos to dynamic ads, I bring your brand's story to life with professional motion design.
               </p>
             </div>
             
-            {/* Planet/Sphere Design */}
+            {/* Planet/Sphere Design - Pink Style */}
             <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-gradient-to-tr from-pink-600/40 to-transparent rounded-full blur-2xl opacity-60 group-hover:scale-110 transition-transform duration-1000" />
             <div className="absolute right-10 bottom-10 w-48 h-48 border border-white/5 rounded-full rotate-45" />
           </motion.div>
 
-          {/* 3. Analytics & Reporting */}
+          {/* 3. SOCIAL ADS (Medium Wide) */}
           <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             whileHover={{ y: -5 }}
             className="md:col-span-7 bg-[#0c0c0e] border border-white/5 rounded-[2.5rem] p-10 relative overflow-hidden group"
           >
             <div className="relative z-10 h-full flex flex-col justify-end">
-              <h3 className="text-2xl font-bold text-white mb-3">Analytics & Reporting</h3>
+              <h3 className="text-2xl font-bold text-white mb-3 italic">Social Media Ads</h3>
               <p className="text-gray-500 text-sm max-w-sm">
-                Gain Valuable Insights Into Your Team's Performance And Project Progress With Our Built-In Analytics Tools.
+                Custom-made visuals optimized for high engagement on Instagram, TikTok, and Facebook.
               </p>
             </div>
             {/* Background Rings */}
@@ -1162,19 +1169,24 @@ export default function HeroSection(): JSX.Element {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-white/5 rounded-full opacity-10" />
           </motion.div>
 
-          {/* 4. Collaboration Tools */}
+          {/* 4. CREATIVE FOCUS (Square-ish) */}
           <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             whileHover={{ y: -5 }}
             className="md:col-span-5 bg-[#0c0c0e] border border-white/5 rounded-[2.5rem] p-10 relative overflow-hidden group text-center flex flex-col items-center justify-center"
           >
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-3">Collaboration Tools</h3>
-              <p className="text-gray-500 text-sm">
-                Foster Collaboration And Teamwork With Our Suite Of Collaboration Tools.
+              <Sparkles className="text-pink-500 mx-auto mb-4" size={40} />
+              <h3 className="text-2xl font-bold text-white mb-3 italic uppercase">Creative Focus</h3>
+              <p className="text-gray-500 text-xs tracking-widest uppercase">
+                Obsessed with details, quality, and fast delivery.
               </p>
             </div>
-            {/* Grid Pattern */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+            {/* Texture */}
+            <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" 
+                 style={{ backgroundImage: `url("https://grainy-gradients.vercel.app/noise.svg")` }} />
             <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-pink-500/5 to-transparent" />
           </motion.div>
 
