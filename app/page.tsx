@@ -381,13 +381,13 @@ export default function HeroSection() {
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: false, amount: 0.2 }} className="text-center mb-20">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -30 }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true, amount: 0.2 }} className="text-center mb-20">
               <h1 className="text-white text-3xl md:text-5xl font-medium tracking-tighter mb-6">My <span className="text-sky-500 ">Services</span></h1>
               <p className="text-gray-400 text-lg max-w-xl mx-auto">High-quality design and development solutions tailored to your needs.</p>
               <div className="h-1.5 w-24 bg-sky-500 mx-auto mt-6 rounded-full shadow-[0_0_20px_rgba(14,165,233,0.6)]" />
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="show" viewport={{ once: false, margin: "-50px" }} variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.15 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.15 } } }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {steps.map((card) => (
                 <motion.div key={card.id} variants={{ hidden: { opacity: 0, y: 40, scale: 0.9 }, show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: "easeOut" } }, exit: { opacity: 0, y: -40, scale: 0.9, transition: { duration: 0.4 } } }} whileHover={{ y: -15, transition: { duration: 0.3 } }} className="group relative p-10 rounded-[1.5rem] border border-white/5 bg-sky-50 dark:bg-white/5 backdrop-blur-md overflow-hidden transition-all duration-500 hover:border-sky-500/40 hover:bg-white/[0.08]">
                   <div className="absolute -inset-20 dark:bg-sky-500/10 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -426,7 +426,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
           >
             <h1 className="text-white text-4xl md:text-5xl font-medium tracking-tighter mb-6 uppercase">
               My strategic <span className="text-[#26A0FF]  font-medium">Process</span>
@@ -448,7 +448,7 @@ export default function HeroSection() {
                 strokeLinecap="round"
                 initial={{ pathLength: 0, opacity: 0 }}
                 whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 transition={{ 
                   duration: 5, // Xawaare dhexdhexaad ah oo soconaya
                   ease: "linear", // Waxay ka dhigaysaa socodka mid siman
@@ -720,7 +720,7 @@ export default function HeroSection() {
             <motion.div 
               initial={{ opacity: 0, x: -50, filter: "blur(15px)" }}
               whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
               className="absolute -top-12 -left-12 w-48 p-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl z-20 hidden md:block"
             >
@@ -743,7 +743,7 @@ export default function HeroSection() {
             <motion.div 
               initial={{ opacity: 0, x: 50, filter: "blur(15px)" }}
               whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.8 }}
               className="absolute top-16 -right-16 w-48 p-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl z-20 hidden md:block"
             >
@@ -766,7 +766,7 @@ export default function HeroSection() {
             <motion.div 
               initial={{ opacity: 0, y: 50, filter: "blur(15px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.8 }}
               className="absolute -bottom-10 -left-6 w-48 p-4 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl z-20 hidden md:block"
             >
@@ -792,7 +792,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, x: 50, filter: "blur(20px)" }}
             whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 1 }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
@@ -817,7 +817,7 @@ export default function HeroSection() {
                 key={i}
                 initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: false }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.1 * i, duration: 0.5 }}
                 className="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-sky-500/30 transition-all group"
               >
@@ -846,7 +846,7 @@ export default function HeroSection() {
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="text-gray-400 text-xs font-bold tracking-[0.4em] uppercase mb-4"
           >
             Trusted By Global Brands
@@ -866,7 +866,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ 
                 duration: 0.6, 
                 delay: index * 0.1, // Mid mid u soo baxaya (Stagger)
@@ -917,7 +917,7 @@ export default function HeroSection() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter italic"
           >
             Professional <span className="text-sky-500 not-italic font-light">Journey</span>
@@ -937,7 +937,7 @@ export default function HeroSection() {
                   <motion.div 
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: false, amount: 0.8 }}
+                    viewport={{ once: true, amount: 0.8 }}
                     className="relative flex items-center justify-center"
                   >
                     <span className="animate-ping absolute inline-flex h-5 w-5 rounded-full bg-sky-400/40"></span>
@@ -949,7 +949,7 @@ export default function HeroSection() {
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   className={`flex flex-col md:flex-row items-center justify-between w-full ${
                     index % 2 !== 0 ? "md:flex-row-reverse" : ""
@@ -1019,7 +1019,7 @@ export default function HeroSection() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className="text-3xl md:text-5xl font-Medium text-white  uppercase tracking-tighter"
           >
             Academic <span className="text-sky-400">Background</span>
@@ -1033,7 +1033,7 @@ export default function HeroSection() {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               className="group p-8 rounded-[1.5rem] bg-[#0c0e12]/40 border border-white/5 backdrop-blur-xl hover:border-sky-500/30 transition-all relative overflow-hidden flex flex-col h-full"
@@ -1208,7 +1208,7 @@ export default function HeroSection() {
     <motion.div 
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
+      viewport={{ once: faltruese }}
       transition={{ duration: 0.8 }}
       className="text-center mb-20"
     >
@@ -1235,7 +1235,7 @@ export default function HeroSection() {
         <motion.div 
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           variants={{
             hidden: { opacity: 0 },
             show: {
