@@ -1208,7 +1208,7 @@ export default function HeroSection() {
     <motion.div 
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: faltruese }}
+      viewport={{ once: true }}
       transition={{ duration: 0.8 }}
       className="text-center mb-20"
     >
