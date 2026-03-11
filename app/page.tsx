@@ -232,7 +232,7 @@ export default function HeroSection() {
       <motion.div 
         initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
         whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-        viewport={{ once: false, amount: 0.5 }} // Mar kasta oo aad ku soo laabato wuu soo blur-baxayaa
+        viewport={{ once: true, amount: 0.5 }} // Mar kasta oo aad ku soo laabato wuu soo blur-baxayaa
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-bold mb-4"
       >
@@ -248,7 +248,7 @@ export default function HeroSection() {
         <motion.span
           initial={{ opacity: 0, filter: "blur(20px)", y: 30 }}
           whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           className="block"
         >
@@ -258,7 +258,7 @@ export default function HeroSection() {
         <motion.span
           initial={{ opacity: 0, filter: "blur(20px)", y: 30 }}
           whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
           className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-sky-600 block"
         >
@@ -271,7 +271,7 @@ export default function HeroSection() {
     <motion.p 
       initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
       whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       transition={{ duration: 1, delay: 0.5 }}
       className="text-gray-400 max-w-md mx-auto lg:mx-0 text-lg leading-relaxed"
     >
@@ -282,7 +282,7 @@ export default function HeroSection() {
     <motion.div 
       initial={{ opacity: 0, y: 20, filter: "blur(5px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.7 }}
       className="flex flex-wrap items-center justify-center lg:justify-start gap-4 relative z-50"
     >
@@ -301,7 +301,7 @@ export default function HeroSection() {
 
   {/* Qaybtii Sawirka halkan ayay ka sii soconaysaa... */}
 
-            <motion.div initial={{ opacity: 0,  y: 80, filter: "blur(5px)" }} whileInView={{ opacity: 1, y: 0, filter: "blur(0px)"  }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 4.4, ease: [0.22, 1, 0.36, 1] }} className="relative order-1 lg:order-2 flex justify-center items-center z-10">
+            <motion.div initial={{ opacity: 0,  y: 80, filter: "blur(5px)" }} whileInView={{ opacity: 1, y: 0, filter: "blur(0px)"  }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 4.4, ease: [0.22, 1, 0.36, 1] }} className="relative order-1 lg:order-2 flex justify-center items-center z-10">
               <div className="absolute w-[80%] aspect-square rounded-full bg-sky-600/15 border border-sky-500/20 animate-pulse"></div>
 
               <div className="relative z-20 w-full max-w-[450px]">
@@ -348,7 +348,7 @@ export default function HeroSection() {
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
               {stats.map((stat, index) => (
-                <motion.div key={index} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.3 }} transition={{ duration: 0.8, delay: index * 0.15, ease: [0.215, 0.61, 0.355, 1] }} className="relative group flex items-center gap-6">
+                <motion.div key={index} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.8, delay: index * 0.15, ease: [0.215, 0.61, 0.355, 1] }} className="relative group flex items-center gap-6">
                   <div className="flex-shrink-0 relative">
                     <div className="absolute -inset-2 bg-sky-500/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="relative p-4 bg-[#061431] border border-white/5 rounded-2xl text-sky-400 group-hover:text-white group-hover:border-sky-500/50 transition-all duration-500">
