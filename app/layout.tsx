@@ -1,25 +1,15 @@
-import type { Metadata } from "next";
-import { Inter, Geist_Mono, Reenie_Beanie } from "next/font/google";
+﻿import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const handwriting = Reenie_Beanie({
-  weight: "400",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Yacqub Ali",
-  description: "Senior Multimedia Designer",
+  title: "Yacqub Ali | Creative Portfolio",
+  description: "Minimalist portfolio of Yacqub Ali, creative designer and multimedia specialist.",
 };
 
 export default function RootLayout({
@@ -29,11 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.className} ${geistMono.variable} ${handwriting.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }
