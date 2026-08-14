@@ -17,7 +17,7 @@ import {
   Sparkles,
   Sun,
 } from 'lucide-react';
-import { FaBehance, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { FaBehance, FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
 import { portfolioData } from './data/portfolio';
 
 const navLinks = [
@@ -156,17 +156,31 @@ const contactCards = [
   },
   {
     label: 'Behance',
-    value: 'yacqub ali ahmed',
+    value: 'Yacqub Ali Ahmed',
     href: 'https://www.behance.net/yacqubaliahmed',
     icon: FaBehance,
     tint: 'from-blue-500/15 to-indigo-500/10',
   },
   {
+    label: 'Facebook',
+    value: 'Yacqub Ali Ahmed',
+    href: 'https://www.facebook.com/share/1bKFN3ZJus/?mibextid=wwXIfr',
+    icon: FaFacebookF,
+    tint: 'from-blue-600/15 to-indigo-500/10',
+  },
+  {
     label: 'Instagram',
     value: '@aymani.47',
-    href: 'https://www.instagram.com/@aymani.47',
+    href: 'https://www.instagram.com/aymani.47/',
     icon: FaInstagram,
     tint: 'from-pink-500/15 to-rose-500/10',
+  },
+  {
+    label: 'LinkedIn',
+    value: 'Yacqub Ali Ahmed',
+    href: 'https://www.linkedin.com/in/yacqub-ali-ahmed-890016248/',
+    icon: FaLinkedinIn,
+    tint: 'from-sky-600/15 to-cyan-500/10',
   },
 ];
 
@@ -316,53 +330,82 @@ export default function HomePage() {
 </header>
 
 <main>
-<section id="home" className="relative px-4 py-24 sm:px-6 lg:px-8 lg:py-32 overflow-hidden bg-white dark:bg-[#0a0b10] text-zinc-900 dark:text-white transition-colors duration-300">
-  {/* Top Sky Gradient Light */}
-  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-sky-500/15 blur-[150px] rounded-full pointer-events-none" />
+  <div id="home" className="relative px-4 py-24 sm:px-6 lg:px-8 lg:py-32 overflow-hidden bg-transparent text-zinc-900 dark:text-white">
+    {/* Top Rain-like Light Beams & Glow Effect */}
+    <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {/* Ambient top light source */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-blue-500/15 dark:bg-blue-500/20 blur-[150px] rounded-full" />
+      
+      {/* Vertical light rays/streaks coming down like rain from top */}
+      <div className="absolute top-0 left-[15%] w-[1px] h-[320px] bg-gradient-to-b from-blue-400/50 via-blue-400/10 to-transparent blur-[0.5px]" />
+      <div className="absolute top-0 left-[30%] w-[2px] h-[280px] bg-gradient-to-b from-sky-400/60 via-sky-400/15 to-transparent blur-[1px]" />
+      <div className="absolute top-0 left-[50%] w-[1px] h-[380px] bg-gradient-to-b from-blue-300/50 via-blue-500/10 to-transparent blur-[0.5px]" />
+      <div className="absolute top-0 left-[70%] w-[2px] h-[300px] bg-gradient-to-b from-sky-400/50 via-sky-400/10 to-transparent blur-[1px]" />
+      <div className="absolute top-0 left-[85%] w-[1px] h-[260px] bg-gradient-to-b from-blue-400/40 via-blue-500/10 to-transparent blur-[0.5px]" />
+    </div>
 
-  <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className="space-y-8 flex flex-col items-center"
-    >
-      {/* Badge */}
-      <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/10 px-4 py-1.5 text-sm font-medium text-sky-700 dark:text-sky-300 backdrop-blur-md shadow-sm">
-        <span className="h-2 w-2 rounded-full bg-sky-500 dark:bg-sky-400 animate-pulse" />
-        Available for freelance & collaboration
-      </div>
-
-      {/* Headings */}
-      <div className="space-y-4">
-        <h1 className="text-4xl font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-6xl lg:text-7xl leading-[1.1]">
-          I create calm, <span className="text-sky-600 dark:text-sky-400">modern visuals</span> that feel clear.
-        </h1>
-        <p className="mx-auto max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-          Creative designer, multimedia specialist, and storyteller turning ideas into thoughtful design with a clean and human feel.
-        </p>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex flex-wrap items-center justify-center gap-4">
-        <a
-          href="#work"
-          className="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 shadow-lg shadow-sky-500/10"
+    <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        className="space-y-8 flex flex-col items-center"
+      >
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-700 backdrop-blur-md dark:border-blue-400/20 dark:bg-blue-400/10 dark:text-blue-300 shadow-sm"
         >
-          View portfolio
-          <ArrowRight size={16} />
-        </a>
-        <a
-          href="#contact"
-          className="inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-white/15 bg-transparent px-6 py-3.5 text-sm font-medium text-zinc-700 dark:text-zinc-200 backdrop-blur-md transition hover:border-sky-500 hover:text-sky-600 dark:hover:border-sky-400 dark:hover:text-sky-300"
-        >
-          Let&apos;s talk
-        </a>
-      </div>
+          <span className="h-2 w-2 rounded-full bg-blue-500 dark:bg-blue-400 animate-pulse" />
+          Available for freelance & collaboration
+        </motion.div>
 
-    </motion.div>
+        {/* Headings */}
+        <div className="space-y-4">
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-4xl font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-6xl lg:text-7xl leading-[1.1]"
+          >
+            I create calm, <span className="text-blue-600 dark:text-blue-400">modern visuals</span> that feel clear.
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mx-auto max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400"
+          >
+            I&apos;m an IT specialist crafting fast websites and striking multimedia work — from Burao to the world, wherever the project takes me.
+          </motion.p>
+        </div>
+
+        {/* Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-wrap items-center justify-center gap-4"
+        >
+          <a
+            href="#work"
+            className="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 shadow-lg shadow-blue-500/10"
+          >
+            View portfolio
+            <ArrowRight size={16} />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-white/15 bg-transparent px-6 py-3.5 text-sm font-medium text-zinc-700 dark:text-zinc-200 backdrop-blur-md transition hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-300"
+          >
+            Let&apos;s talk
+          </a>
+        </motion.div>
+      </motion.div>
+    </div>
   </div>
-</section>
 </main>
 
       <div>
@@ -767,110 +810,263 @@ export default function HomePage() {
   </div>
 </AnimatedSection>
 
-        <AnimatedSection id="contact" className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2_fr] lg:items-start">
-        
-        {/* Left Column: Info & Contact Cards */}
-        <div className="space-y-8">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-500">Contact</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
-              Let&apos;s build something calm and memorable.
-            </h2>
-            <p className="mt-4 text-base leading-7 text-zinc-600 dark:text-zinc-400">
-              If you want a refined brand presence, a thoughtful website, or strong visual content, I would love to hear from you.
-            </p>
-          </div>
-
-          {/* Status Box */}
-          <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-white/10 dark:bg-zinc-900/50">
-            <div className="flex items-center gap-2.5">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
-              </span>
-              <p className="text-sm font-semibold text-zinc-900 dark:text-white">Available for select freelance projects</p>
-            </div>
-            <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400">
-              Preferred response time: within 24 hours. Visual direction, and brand refreshes.
-            </p>
-          </div>
-        </div>
-
-        {/* Right Column: SaaS Style Form Card */}
-        <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-xl shadow-zinc-900/5 dark:border-white/10 dark:bg-zinc-900 sm:p-10">
-          <form ref={form} onSubmit={sendEmail} className="space-y-5">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Name</label>
-                <input 
-                  type="text" 
-                  name="from_name"
-                  required
-                  placeholder="Your name" 
-                  className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
-                />
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Email</label>
-                <input 
-                  type="email" 
-                  name="user_email"
-                  required
-                  placeholder="your@email.com" 
-                  className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Subject</label>
-              <input 
-                type="text" 
-                name="subject"
-                required
-                placeholder="What&apos;s this about?" 
-                className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Message</label>
-              <textarea 
-                name="message"
-                required
-                rows={4}
-                placeholder="Tell me about your project..." 
-                className="w-full resize-none rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
-              ></textarea>
-            </div>
-
-            {success && (
-              <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                Fariintaada si guul leh bay ku soo gaadhay! Waan soo jawaabi doonaa dhakhso.
-              </p>
-            )}
-
-            {error && (
-              <p className="text-sm font-medium text-red-600 dark:text-red-400">
-                {error}
-              </p>
-            )}
-
-            <button 
-              type="submit" 
-              disabled={loading}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-zinc-900/10 transition hover:bg-zinc-800 disabled:opacity-50 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
-            >
-              {loading ? 'Waa la dirayaa...' : 'Send Message'}
-              {!loading && <ArrowRight size={16} />}
-            </button>
-          </form>
-        </div>
-
+     <AnimatedSection id="contact" className="px-4 py-20 sm:px-6 lg:px-8">
+  <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
+    
+    {/* Left Column: Info, Contact Cards & Socials */}
+    <div className="space-y-8">
+      <div>
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-sky-500">Contact</p>
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+          Let&apos;s build something calm and memorable.
+        </h2>
+        <p className="mt-4 text-base leading-7 text-zinc-600 dark:text-zinc-400">
+          Have a project in mind? I&apos;d love to hear about it. Let&apos;s discuss how we can work together to bring your ideas to life.
+        </p>
       </div>
-    </AnimatedSection>
 
+      {/* Contact Details List */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        {contactCards.map((card) => {
+          const Icon = card.icon;
+
+          return (
+            <a
+              key={card.label}
+              href={card.href}
+              target={card.href.startsWith('http') ? '_blank' : undefined}
+              rel={card.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className="group flex items-start gap-4 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 transition hover:-translate-y-0.5 hover:border-sky-500/40 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+            >
+              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${card.tint} text-zinc-800 dark:text-white`}>
+                <Icon className="h-5 w-5" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">{card.label}</p>
+                <p className="mt-1 text-sm font-semibold text-zinc-900 break-words dark:text-white">{card.value}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      {/* Connect With Me (Social Links) */}
+      <div className="space-y-3 pt-2">
+        <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Connect With Me</p>
+        <div className="flex items-center gap-3">
+          {/* LinkedIn */}
+          <a 
+            href="https://www.linkedin.com/in/yacqub-ali-ahmed-890016248/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex h-11 w-11 items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-50/60 text-zinc-700 transition hover:-translate-y-0.5 hover:border-sky-500/40 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+
+          {/* GitHub */}
+          <a 
+            href="https://github.com/Yacqo-47" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex h-11 w-11 items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-50/60 text-zinc-700 transition hover:-translate-y-0.5 hover:border-sky-500/40 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 22v-4a4.8 4.8 0 00-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 004 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 18c-4.51 2-5-2-7-2"></path>
+            </svg>
+          </a>
+
+          {/* Twitter / X */}
+          <a 
+            href="https://twitter.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex h-11 w-11 items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-50/60 text-zinc-700 transition hover:-translate-y-0.5 hover:border-sky-500/40 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Status Box */}
+      <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-5 dark:border-white/10 dark:bg-zinc-900/50">
+        <div className="flex items-center gap-2.5">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+          </span>
+          <p className="text-sm font-semibold text-zinc-900 dark:text-white">Currently available</p>
+        </div>
+        <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+          Typically respond within 24 hours.
+        </p>
+      </div>
+    </div>
+
+    {/* Right Column: SaaS Style Form Card */}
+    <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-xl shadow-zinc-900/5 dark:border-white/10 dark:bg-zinc-900 sm:p-10">
+      <form ref={form} onSubmit={sendEmail} className="space-y-5">
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Name</label>
+            <input 
+              type="text" 
+              name="from_name"
+              required
+              placeholder="Your name" 
+              className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
+            />
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Email</label>
+            <input 
+              type="email" 
+              name="user_email"
+              required
+              placeholder="your@email.com" 
+              className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-1.5">
+          <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Subject</label>
+          <input 
+            type="text" 
+            name="subject"
+            required
+            placeholder="What&apos;s this about?" 
+            className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
+          />
+        </div>
+
+        <div className="space-y-1.5">
+          <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Message</label>
+          <textarea 
+            name="message"
+            required
+            rows={4}
+            placeholder="Tell me about your project..." 
+            className="w-full resize-none rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
+          ></textarea>
+        </div>
+
+        {/* Budget Range Dropdown */}
+        <div className="space-y-1.5">
+          <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Budget Range <span className="text-zinc-400 font-normal">(Optional)</span></label>
+          <select 
+            name="budget"
+            defaultValue=""
+            className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
+          >
+            <option value="" disabled>Select budget range</option>
+            <option value="1k-3k">$1,000 - $3,000</option>
+            <option value="3k-6k">$3,000 - $6,000</option>
+            <option value="6k+">$6,000+</option>
+          </select>
+        </div>
+
+        {success && (
+          <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
+            Fariintaada si guul leh bay ku soo gaadhay! Waan soo jawaabi doonaa dhakhso.
+          </p>
+        )}
+
+        {error && (
+          <p className="text-sm font-medium text-red-600 dark:text-red-400">
+            {error}
+          </p>
+        )}
+
+        <button 
+          type="submit" 
+          disabled={loading}
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-zinc-900/10 transition hover:bg-zinc-800 disabled:opacity-50 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
+        >
+          {loading ? 'Waa la dirayaa...' : 'Send Message'}
+          {!loading && <ArrowRight size={16} />}
+        </button>
+      </form>
+    </div>
+
+  </div>
+</AnimatedSection>
+<footer className="border-t border-zinc-200 bg-white py-14 dark:border-white/10 dark:bg-zinc-950">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
+      <div className="space-y-5">
+        <div className="flex items-center gap-3">
+          <img
+            src="/ME.png"
+            alt="Yacqub Ali"
+            className="h-10 w-10 rounded-full border border-zinc-200 object-cover dark:border-white/10"
+          />
+          <div>
+            <p className="text-lg font-semibold text-zinc-900 dark:text-white">Yacqub Ali</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Creative designer</p>
+          </div>
+        </div>
+
+        <p className="max-w-md text-sm leading-7 text-zinc-600 dark:text-zinc-400">
+          I design clear, modern visuals and digital experiences that help brands feel more confident, memorable, and easy to trust.
+        </p>
+
+        <div className="flex items-center gap-2.5">
+          <a href="https://www.behance.net/yacqubaliahmed" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-700 transition hover:border-sky-500 hover:text-sky-500 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-300">
+            <FaBehance className="h-4 w-4" />
+          </a>
+          <a href="https://www.facebook.com/share/1bKFN3ZJus/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-700 transition hover:border-sky-500 hover:text-sky-500 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-300">
+            <FaFacebookF className="h-4 w-4" />
+          </a>
+          <a href="https://www.instagram.com/aymani.47/" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-700 transition hover:border-sky-500 hover:text-sky-500 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-300">
+            <FaInstagram className="h-4 w-4" />
+          </a>
+          <a href="https://www.linkedin.com/in/yacqub-ali-ahmed-890016248/" target="_blank" rel="noopener noreferrer" className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-700 transition hover:border-sky-500 hover:text-sky-500 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-300">
+            <FaLinkedinIn className="h-4 w-4" />
+          </a>
+          <a href="mailto:yacquubcali2019@gmail.com" className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-700 transition hover:border-sky-500 hover:text-sky-500 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-300">
+            <Mail className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-900 dark:text-white">Navigate</p>
+        <ul className="mt-4 space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
+          <li><a href="#home" className="transition hover:text-sky-500 dark:hover:text-sky-400">Home</a></li>
+          <li><a href="#services" className="transition hover:text-sky-500 dark:hover:text-sky-400">Services</a></li>
+          <li><a href="#work" className="transition hover:text-sky-500 dark:hover:text-sky-400">Work</a></li>
+          <li><a href="#journey" className="transition hover:text-sky-500 dark:hover:text-sky-400">Journey</a></li>
+          <li><a href="#contact" className="transition hover:text-sky-500 dark:hover:text-sky-400">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-900 dark:text-white">Contact</p>
+        <ul className="mt-4 space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
+          <li><a href="mailto:yacquubcali2019@gmail.com" className="transition hover:text-sky-500 dark:hover:text-sky-400">yacquubcali2019@gmail.com</a></li>
+          <li><a href="https://wa.me/252634076877" target="_blank" rel="noopener noreferrer" className="transition hover:text-sky-500 dark:hover:text-sky-400">+252 63 407 6877</a></li>
+          <li className="text-zinc-500 dark:text-zinc-400">Available worldwide</li>
+        </ul>
+      </div>
+    </div>
+
+    <div className="mt-10 flex flex-col items-center justify-between border-t border-zinc-200 pt-6 text-center sm:flex-row sm:text-left dark:border-white/10">
+      <p className="text-xs text-zinc-500 dark:text-zinc-400">
+        © 2026 Yacqub Ali. All rights reserved.
+      </p>
+      <p className="mt-3 text-xs text-zinc-500 sm:mt-0 dark:text-zinc-400">
+        Built with clarity, craft, and purpose.
+      </p>
+    </div>
+  </div>
+</footer>
       {/* Floating WhatsApp quick-connect button */}
       <a
         href="https://wa.me/252634076877"
