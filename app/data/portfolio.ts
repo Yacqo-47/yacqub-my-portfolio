@@ -1,5 +1,4 @@
 export const portfolioData = [
-  // --- IMAGES (9 Items) ---
   { id: 1, title: "Modern Branding", category: "Branding", type: "image", src: "/projects/p12.png" },
   { id: 2, title: "Visual Identity", category: "Branding", type: "image", src: "/projects/p14.png" },
   { id: 3, title: "Minimal Logo", category: "Logos", type: "image", src: "/projects/l3.png" },
@@ -17,16 +16,13 @@ export const portfolioData = [
   { id: 15, title: "UI Elements", category: "Design", type: "image", src: "/projects/p17.png" },
   { id: 16, title: "UI Elements", category: "Design", type: "image", src: "/projects/p15.png" },
   { id: 17, title: "UI Elements", category: "Design", type: "image", src: "/projects/p18.png" },
-  { id: 18, title: "UI Elements", category: "Design", type: "image", src: "/projects/p23.png" },  
+  { id: 18, title: "UI Elements", category: "Design", type: "image", src: "/projects/p23.png" },
   { id: 19, title: "UI Elements", category: "Design", type: "image", src: "/projects/p25.png" },
   { id: 20, title: "UI Elements", category: "Design", type: "image", src: "/projects/p26.png" },
   { id: 29, title: "UI Elements", category: "Design", type: "image", src: "/projects/p27.png" },
-  
 
-  // --- VIDEOS (2 Items) ---
-  { id: 21, title: "Motion Promo", category: "Video", type: "video", src: "/projects/v1.mp4" },
-  { id: 22, title: "Short Film ", category: "Video", type: "video", src: "/projects/v2.mp4" },
-  { id: 23, title: "Short Film ", category: "Video", type: "video", src: "/projects/v3.mp4" },
-  { id: 24, title: "Short Film ", category: "Video", type: "video", src: "/projects/v4.mp4" },
-  
+  { id: 21, title: "Motion Promo", category: "Video", type: "video", src: "/projects/v1.mp4", poster: "/projects/p12.png" },
+  { id: 22, title: "Short Film", category: "Video", type: "video", src: "/projects/v2.mp4", poster: "/projects/p14.png" },
+  { id: 23, title: "Brand Reel", category: "Video", type: "video", src: "/projects/v3.mp4", poster: "/projects/p7.png" },
+  { id: 24, title: "Campaign Video", category: "Video", type: "video", src: "/projects/v4.mp4", poster: "/projects/p1.png" },
 ];

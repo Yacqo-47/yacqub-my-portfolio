@@ -1,6 +1,5 @@
 ﻿'use client';
 import React, { useRef, useState, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -186,8 +185,34 @@ const contactCards = [
 
 // sendEmail and form ref moved into component (hooks must not be called at top-level)
 
-// Qeybaha saxda ah ee ku salaysan Branding, Post Design, Motion, iyo Color Grading
-const categories = ['All', 'Brand Identity', 'Post Design', 'Motion Graphic', 'Color Grading', 'Web & App'];
+const categories = [
+  { label: 'All', value: 'All' },
+  { label: 'Brand', value: 'Branding' },
+  { label: 'Logo', value: 'Logos' },
+  { label: 'Social', value: 'Social Media' },
+  { label: 'Design', value: 'Design' },
+  { label: 'Videos', value: 'Video' },
+];
+
+const normalizeCategory = (value: string) => value.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+
+const matchesCategory = (itemCategory: string, selectedCategory: string) => {
+  if (selectedCategory === 'All') return true;
+
+  const item = normalizeCategory(itemCategory);
+  const selected = normalizeCategory(selectedCategory);
+
+  const aliases: Record<string, string[]> = {
+    branding: ['brand', 'branding', 'brand identity'],
+    logos: ['logo', 'logos'],
+    'social media': ['social media', 'social', 'socialmedia'],
+    design: ['design'],
+    video: ['video', 'videos', 'motion graphic', 'motiongraphics', 'color grading', 'colorgrading'],
+  };
+
+  return aliases[selected]?.includes(item) || item === selected;
+};
+
 const featuredWork = portfolioData;
 
 export default function HomePage() {
@@ -200,29 +225,43 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [mailtoLink, setMailtoLink] = useState('');
 
-  const sendEmail = (e: React.FormEvent) => {
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.current) return;
 
     setLoading(true);
     setError('');
 
-    // Replace with your EmailJS Service ID, Template ID and Public Key
-    emailjs.send("service_lw0dkcv","template_se3idrq")
-      .then(
-        () => {
-          setLoading(false);
-          setSuccess(true);
-          form.current?.reset();
-          setTimeout(() => setSuccess(false), 5000);
-        },
-        (error) => {
-          setLoading(false);
-          setError('Waa awoodi waayay inuu diro fariinta, fadlan dib u dayso.');
-          console.log('FAILED...', error?.text ?? error);
-        }
-      );
+    // Build mailto fallback using form values
+    const fd = new FormData(form.current);
+    const subject = fd.get('subject')?.toString() ?? '';
+    const name = fd.get('from_name')?.toString() ?? '';
+    const fromEmail = fd.get('user_email')?.toString() ?? '';
+    const message = fd.get('message')?.toString() ?? '';
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${fromEmail}\n\n${message}`);
+    setMailtoLink(`mailto:${contactCards[0].value}?subject=${encodeURIComponent(subject)}&body=${body}`);
+
+    // Send to our server-side API which will forward via SMTP
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ from_name: name, user_email: fromEmail, subject, message }),
+      });
+
+      if (!res.ok) throw new Error('Server error');
+
+      setLoading(false);
+      setSuccess(true);
+      form.current?.reset();
+      setTimeout(() => setSuccess(false), 5000);
+    } catch (err) {
+      console.error('Send to server failed', err);
+      setLoading(false);
+      setError('This message failed to send, please send into email through the button below.');
+    }
   };
 
   useEffect(() => {
@@ -277,12 +316,7 @@ export default function HomePage() {
     </motion.section>
   );
 
-  // Habka Filter-ka oo si habsami leh u kala saaraya qaybaha
-  const filteredWork = activeCategory === 'All'
-    ? featuredWork
-    : featuredWork.filter(item => 
-        item.category.toLowerCase().includes(activeCategory.toLowerCase())
-      );
+  const filteredWork = featuredWork.filter((item) => matchesCategory(item.category, activeCategory));
 
   if (!mounted) return null;
 
@@ -390,12 +424,12 @@ export default function HomePage() {
           className="flex flex-wrap items-center justify-center gap-4"
         >
           <a
-            href="#work"
-            className="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200 shadow-lg shadow-blue-500/10"
-          >
-            View portfolio
-            <ArrowRight size={16} />
-          </a>
+      href="#work"
+      className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3.5 text-sm font-medium text-white transition hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 shadow-lg shadow-blue-500/25"
+    >
+      View portfolio
+      <ArrowRight size={16} />
+    </a>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full border border-zinc-300 dark:border-white/15 bg-transparent px-6 py-3.5 text-sm font-medium text-zinc-700 dark:text-zinc-200 backdrop-blur-md transition hover:border-blue-500 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-300"
@@ -449,7 +483,7 @@ export default function HomePage() {
 
               <div className="grid gap-3 sm:grid-cols-3">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-white/5">
+                  <div key={stat.label} className="rounded-2xl border border-zinc-200 bg-white p-4 transition hover:-translate-y-1  dark:border-white/10 dark:bg-white/5">
                     <p className="text-2xl font-semibold text-zinc-900 dark:text-white">{stat.value}</p>
                     <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{stat.label}</p>
                   </div>
@@ -500,7 +534,7 @@ export default function HomePage() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.4, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={{ y: -6, scale: 1.01 }}
-                    className="group rounded-[1.6rem] border border-zinc-200 bg-white p-6 shadow-sm transition hover:shadow-lg dark:border-white/10 dark:bg-white/5"
+                    className="group rounded-[1.6rem] border border-zinc-200 bg-white p-6 dark:border-white/10 dark:bg-white/5"
                   >
                     <div className="relative inline-flex rounded-2xl bg-sky-500/10 p-3 text-sky-600 transition group-hover:bg-sky-500/20 dark:text-sky-300">
                       <Icon size={20} />
@@ -514,76 +548,92 @@ export default function HomePage() {
           </div>
         </AnimatedSection>
 
-        {/* Selected Work Section */}
-        <AnimatedSection id="work" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <div className="mx-auto max-w-6xl">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-300">Selected work</p>
-                <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-4xl">
-                  A curated view of the work I&apos;ve developed.
-                </h2>
-              </div>
-              <a href="#contact" className="text-sm font-medium text-zinc-600 transition hover:text-sky-600 dark:text-zinc-400 dark:hover:text-white">
-                Start a project
-              </a>
-            </div>
+       {/* Selected Work Section */}
+<AnimatedSection id="work" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+  <div className="mx-auto max-w-6xl">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-600 dark:text-sky-300">Selected work</p>
+        <h2 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-4xl">
+          A curated view of the work I&apos;ve developed.
+        </h2>
+      </div>
+      <a href="#contact" className="text-sm font-medium text-zinc-600 transition hover:text-sky-600 dark:text-zinc-400 dark:hover:text-white">
+        Start a project
+      </a>
+    </div>
 
-            {/* Category Filter Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`rounded-full px-5 py-2 text-sm font-medium transition ${
-                    activeCategory === category
-                      ? 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950'
-                      : 'border border-zinc-200 bg-white text-zinc-600 hover:border-zinc-300 dark:border-white/10 dark:bg-white/5 dark:text-zinc-400 dark:hover:text-white'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+    {/* Category Filter Buttons */}
+    <div className="mt-8 flex flex-wrap items-center gap-2">
+      {categories.map((category) => (
+        <button
+          key={category.value}
+          onClick={() => setActiveCategory(category.value)}
+          className={`rounded-full px-5 py-2 text-sm font-medium transition ${
+            activeCategory === category.value
+              ? 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950'
+              : 'border border-zinc-200 bg-white text-zinc-600 hover:border-zinc-300 dark:border-white/10 dark:bg-white/5 dark:text-zinc-400 dark:hover:text-white'
+          }`}
+        >
+          {category.label}
+        </button>
+      ))}
+    </div>
 
-            {/* Projects Grid */}
-            <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {filteredWork.map((item, index) => (
-                <motion.article
-                  key={item.id}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.35, delay: index * 0.03, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -6, scale: 1.01 }}
-                  className="group overflow-hidden rounded-[1.6rem] border border-zinc-200 bg-white shadow-sm transition hover:shadow-lg dark:border-white/10 dark:bg-white/5"
-                >
-                  <div className="relative overflow-hidden">
-                    <span className="absolute left-4 top-4 z-10 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-zinc-900 backdrop-blur-md dark:bg-zinc-900/80 dark:text-white">
-                      {item.category}
-                    </span>
+    {/* Projects Grid */}
+    <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {filteredWork.map((item, index) => (
+        <motion.article
+          key={item.id}
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.35, delay: index * 0.03, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -6, scale: 1.01 }}
+          className="group overflow-hidden rounded-[1.6rem] border border-zinc-200 bg-white shadow-sm transition hover:shadow-lg dark:border-white/10 dark:bg-white/5"
+        >
+          <div className="relative h-64 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+            <span className="absolute left-4 top-4 z-10 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-zinc-900 backdrop-blur-md dark:bg-zinc-900/80 dark:text-white">
+              {item.category}
+            </span>
 
-                    {item.type === 'video' ? (
-                      <video src={item.src} preload="none" loop muted playsInline className="h-64 w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    ) : (
-                      <img src={item.src} alt={item.title} loading="lazy" decoding="async" className="h-64 w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
-                    )}
-                  </div>
-                  
-                  <div className="flex items-center justify-between px-5 py-4">
-                    <div>
-                      <p className="text-sm font-semibold text-zinc-900 dark:text-white">{item.title}</p>
-                      <p className="text-sm text-zinc-500 dark:text-zinc-400">{item.category}</p>
-                    </div>
-                    <span className="rounded-full bg-sky-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-300">
-                      {item.type}
-                    </span>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
+            {item.type === 'video' ? (
+              <video
+                src={item.src}
+                poster={item.poster?.replace?.('.webp', '.png') ?? item.poster}
+                preload="none"
+                controls
+                playsInline
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+              />
+            ) : (
+              <img
+                src={item.src}
+                alt={item.title}
+                loading="lazy"
+                decoding="async"
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+              />
+            )}
           </div>
-        </AnimatedSection>
+          
+          <div className="flex items-center justify-between px-5 py-4">
+            <div>
+              <p className="text-sm font-semibold text-zinc-900 dark:text-white">{item.title}</p>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">{item.category}</p>
+            </div>
+            <span className="rounded-full bg-sky-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-300">
+              {item.type}
+            </span>
+          </div>
+        </motion.article>
+      ))}
+    </div>
+  </div>
+</AnimatedSection>
 
   <AnimatedSection id="journey" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-6xl">
@@ -957,20 +1007,7 @@ export default function HomePage() {
           ></textarea>
         </div>
 
-        {/* Budget Range Dropdown */}
-        <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Budget Range <span className="text-zinc-400 font-normal">(Optional)</span></label>
-          <select 
-            name="budget"
-            defaultValue=""
-            className="w-full rounded-xl border border-zinc-200 bg-zinc-50/50 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-sky-500 focus:bg-white focus:ring-2 focus:ring-sky-500/20 dark:border-white/10 dark:bg-zinc-950/50 dark:text-white dark:focus:bg-zinc-950"
-          >
-            <option value="" disabled>Select budget range</option>
-            <option value="1k-3k">$1,000 - $3,000</option>
-            <option value="3k-6k">$3,000 - $6,000</option>
-            <option value="6k+">$6,000+</option>
-          </select>
-        </div>
+        
 
         {success && (
           <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
@@ -979,9 +1016,17 @@ export default function HomePage() {
         )}
 
         {error && (
-          <p className="text-sm font-medium text-red-600 dark:text-red-400">
-            {error}
-          </p>
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-red-600 dark:text-red-400">{error}</p>
+            {mailtoLink && (
+              <a
+                href={mailtoLink}
+                className="inline-flex items-center gap-2 rounded-xl bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700"
+              >
+                send email directly
+              </a>
+            )}
+          </div>
         )}
 
         <button 
@@ -1068,17 +1113,15 @@ export default function HomePage() {
   </div>
 </footer>
       {/* Floating WhatsApp quick-connect button */}
-      <a
-        href="https://wa.me/252634076877"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-3 rounded-full bg-emerald-500 px-4 py-3 text-sm font-medium text-white shadow-lg hover:bg-emerald-600"
-        aria-label="Chat on WhatsApp"
-      >
-        <FaWhatsapp />
-        <span>WhatsApp</span>
-      </a>
-
+    <a
+  href="https://wa.me/252634076877"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg hover:bg-emerald-600"
+  aria-label="Chat on WhatsApp"
+>
+  <FaWhatsapp className="h-7 w-7" />
+</a>
       </div>
     </div>
   );

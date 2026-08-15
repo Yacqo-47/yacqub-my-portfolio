@@ -1,0 +1,53 @@
+export const projects = [
+  // Logos (l*.png)
+  { id: 'l1', title: 'Logo 1', category: 'Logos', type: 'image', src: '/projects/l1.png' },
+  { id: 'l2', title: 'Logo 2', category: 'Logos', type: 'image', src: '/projects/l2.png' },
+  { id: 'l3', title: 'Logo 3', category: 'Logos', type: 'image', src: '/projects/l3.png' },
+  { id: 'l4', title: 'Logo 4', category: 'Logos', type: 'image', src: '/projects/l4.png' },
+  { id: 'l5', title: 'Logo 5', category: 'Logos', type: 'image', src: '/projects/l5.png' },
+  { id: 'l6', title: 'Logo 6', category: 'Logos', type: 'image', src: '/projects/l6.png' },
+  { id: 'l8', title: 'Logo 8', category: 'Logos', type: 'image', src: '/projects/l8.png' },
+  { id: 'l9', title: 'Logo 9', category: 'Logos', type: 'image', src: '/projects/l9.png' },
+  { id: 'l14', title: 'Logo 14', category: 'Logos', type: 'image', src: '/projects/l14.png' },
+
+  // Photos / artwork (p*.png)
+  { id: 'p1', title: 'Project Image 1', category: 'Social Media', type: 'image', src: '/projects/p1.png' },
+  { id: 'p2', title: 'Project Image 2', category: 'Design', type: 'image', src: '/projects/p2.png' },
+  { id: 'p3', title: 'Project Image 3', category: 'Social Media', type: 'image', src: '/projects/p3.png' },
+  { id: 'p4', title: 'Project Image 4', category: 'Design', type: 'image', src: '/projects/p4.png' },
+  { id: 'p5', title: 'Project Image 5', category: 'Design', type: 'image', src: '/projects/p5.png' },
+  { id: 'p6', title: 'Project Image 6', category: 'Design', type: 'image', src: '/projects/p6.png' },
+  { id: 'p7', title: 'Project Image 7', category: 'Branding', type: 'image', src: '/projects/p7.png' },
+  { id: 'p8', title: 'Project Image 8', category: 'Design', type: 'image', src: '/projects/p8.png' },
+  { id: 'p9', title: 'Project Image 9', category: 'Design', type: 'image', src: '/projects/p9.png' },
+  { id: 'p10', title: 'Project Image 10', category: 'Branding', type: 'image', src: '/projects/p10.png' },
+  { id: 'p11', title: 'Project Image 11', category: 'Branding', type: 'image', src: '/projects/p11.png' },
+  { id: 'p12', title: 'Project Image 12', category: 'Branding', type: 'image', src: '/projects/p12.png' },
+  { id: 'p13', title: 'Project Image 13', category: 'Branding', type: 'image', src: '/projects/p13.png' },
+  { id: 'p14', title: 'Project Image 14', category: 'Branding', type: 'image', src: '/projects/p14.png' },
+  { id: 'p15', title: 'Project Image 15', category: 'Design', type: 'image', src: '/projects/p15.png' },
+  { id: 'p16', title: 'Project Image 16', category: 'Design', type: 'image', src: '/projects/p16.png' },
+  { id: 'p17', title: 'Project Image 17', category: 'Design', type: 'image', src: '/projects/p17.png' },
+  { id: 'p18', title: 'Project Image 18', category: 'Design', type: 'image', src: '/projects/p18.png' },
+  { id: 'p19', title: 'Project Image 19', category: 'Design', type: 'image', src: '/projects/p19.png' },
+  { id: 'p20', title: 'Project Image 20', category: 'Design', type: 'image', src: '/projects/p20.png' },
+  { id: 'p21', title: 'Project Image 21', category: 'Design', type: 'image', src: '/projects/p21.png' },
+  { id: 'p22', title: 'Project Image 22', category: 'Design', type: 'image', src: '/projects/p22.png' },
+  { id: 'p23', title: 'Project Image 23', category: 'Design', type: 'image', src: '/projects/p23.png' },
+  { id: 'p24', title: 'Project Image 24', category: 'Logos', type: 'image', src: '/projects/p24.png' },
+  { id: 'p25', title: 'Project Image 25', category: 'Design', type: 'image', src: '/projects/p25.png' },
+  { id: 'p26', title: 'Project Image 26', category: 'Design', type: 'image', src: '/projects/p26.png' },
+  { id: 'p27', title: 'Project Image 27', category: 'Design', type: 'image', src: '/projects/p27.png' },
+
+  // Videos (v*.mp4)
+  { id: 'v1', title: 'Motion Promo 1', category: 'Video', type: 'video', src: '/projects/v1.mp4', poster: '/projects/p12.png' },
+  { id: 'v2', title: 'Motion Promo 2', category: 'Video', type: 'video', src: '/projects/v2.mp4', poster: '/projects/p14.png' },
+  { id: 'v3', title: 'Motion Promo 3', category: 'Video', type: 'video', src: '/projects/v3.mp4', poster: '/projects/p7.png' },
+  { id: 'v4', title: 'Motion Promo 4', category: 'Video', type: 'video', src: '/projects/v4.mp4', poster: '/projects/p1.png' },
+  { id: 'v5', title: 'Motion Promo 5', category: 'Video', type: 'video', src: '/projects/v5.mp4', poster: '/projects/p2.png' },
+  { id: 'v6', title: 'Motion Promo 6', category: 'Video', type: 'video', src: '/projects/v6.mp4', poster: '/projects/p3.png' },
+  { id: 'v7', title: 'Motion Promo 7', category: 'Video', type: 'video', src: '/projects/v7.mp4', poster: '/projects/p4.png' },
+  { id: 'v9', title: 'Motion Promo 9', category: 'Video', type: 'video', src: '/projects/v9.mp4', poster: '/projects/p5.png' },
+];
+
+export default projects;

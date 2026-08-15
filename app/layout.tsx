@@ -1,10 +1,17 @@
 ﻿import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from 'next/font/local';
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
+const googleSans = localFont({
+  src: [
+    { path: '../public/font/GoogleSans-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../public/font/GoogleSans-Medium.ttf', weight: '500', style: 'normal' },
+    { path: '../public/font/GoogleSans-SemiBold.ttf', weight: '600', style: 'normal' },
+    { path: '../public/font/GoogleSans-Bold.ttf', weight: '700', style: 'normal' },
+    { path: '../public/font/GoogleSans-Italic.ttf', weight: '400', style: 'italic' },
+  ],
+  display: 'swap',
+  variable: '--font-google-sans',
 });
 
 export const metadata: Metadata = {
@@ -19,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${googleSans.className} antialiased`}>{children}</body>
     </html>
   );
 }
